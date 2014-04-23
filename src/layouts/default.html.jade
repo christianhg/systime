@@ -1,0 +1,42 @@
+doctype 5
+html.no-js(lang="dk")
+  head
+      meta(charset="utf-8")
+      meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+      //- Fav icon
+      link(rel="icon", href="assets/img/favicon.png", type="image/x-icon") 
+      //- Output DocPad produced meta elements
+      != getBlock('meta').toHTML()
+
+      title Rumskolen
+
+      meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable = no")
+      //- Shims: IE6-8 support of HTML5 elements
+      //if lt IE 9
+        script(async src="http://html5shim.googlecode.com/svn/trunk/html5.js")
+      //- JS
+      script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+      script(src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js")
+      script(src="assets/scripts/main.js")
+      script(src="assets/scripts/bootstrap.js")
+      != getBlock("styles").add(["/assets/stylesheets/main.css"]).toHTML()
+  body
+    #page.col-xs-12.col-sm-10.col-md-10.col-lg-10
+        header(role="banner")
+          nav(role="navigation")
+            ul.clearfix.col-xs-12.col-sm-12.col-md-12.col-lg-12
+              li.col-xs-9.col-sm-5.col-md-4.col-lg-4
+                a(href="index.html") Systime
+                  span.icon
+                    img(src="assets/img/icon.png").icon
+                  span.app-title Rumskolen
+              li.book-title.col-sm-2.col-md-4.col-lg-4.hidden-xs
+                a(href="index.html") Matematik
+              li.uni-login.col-sm-5.col-md-4.col-lg-4.hidden-xs
+                a(href="#fakelink").button Login med UNI•Login
+              li.visible-xs
+                img(src="assets/img/nav.png").collapse-btn
+                  
+        #content
+          != content
+    != getBlock("scripts").toHTML()
